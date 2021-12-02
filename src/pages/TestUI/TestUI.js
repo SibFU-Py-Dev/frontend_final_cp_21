@@ -4,6 +4,7 @@ import {ButtonBlur} from "../../components/button/buttonBlur/ButtonBlur";
 import {ButtonBorder} from "../../components/button/buttonBorder/ButtonBorder";
 import {ButtonNone} from "../../components/button/buttonNone/ButtonNone";
 import {ButtonIcon} from "../../components/button/buttonIcon/ButtonIcon";
+import { Alert } from '../../components/alert/Alert';
 
 
 export const TestUI = () => {
@@ -22,8 +23,16 @@ export const TestUI = () => {
                 <ButtonNone label={'Кнопка'} callback={buttonHandler} style={s.margin_right} />
 
                 <ButtonIcon label={'Кнопка'} callback={buttonHandler} style={s.margin_right} />
+                
+                
             </div>
+                <Alert color='red' text='text example'></Alert>
 
+                <Alert color='yellow' text='text example'></Alert>
+
+                <Alert color='green' text='text example'></Alert>
+
+                <Alert color='blue' text='text example'></Alert>
             <div className={s.wrapper}>
 
             </div>
