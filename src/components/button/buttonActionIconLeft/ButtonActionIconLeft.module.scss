@@ -1,0 +1,29 @@
+.button {
+  padding: 12px 20px;
+  background: #FFF;
+  border: 1px solid #009FDA;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-height: 39px;
+
+  .button__label {
+    margin-left: 8px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #009FDA;
+  }
+
+  &:hover {
+    border: 1px solid #12B2ED;
+
+    .button__label {
+      color: #12B2ED;
+    }
+  }
+}
+
+
+
