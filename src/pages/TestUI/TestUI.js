@@ -13,6 +13,7 @@ import {ButtonActionDashedIconLeft} from "../../components/button/buttonActionDa
 import {ButtonLoock} from "../../components/button/buttonLoock/ButtonLoock";
 import {ButtonSmallIcon} from "../../components/button/buttonSmallIcon/ButtonSmallIcon";
 import {ButtonSmallBlurIcon} from "../../components/button/buttonSmallBlurIcon/ButtonSmallBlurIcon";
+import {Accordion} from "../../components/accordion/Accordion";
 
 
 export const TestUI = () => {
@@ -20,6 +21,22 @@ export const TestUI = () => {
     const buttonHandler = () => {
         console.log('click - button')
     }
+
+    const ValueAccordion = (
+        <>
+        <div className={s.text_blu}>
+            Буравлева Наталья Сергеевна / Горлова Наталья Михайловна
+        </div>
+
+        <div className={s.text}>
+            ОО «Алтайский» — Андрюкова Елена Юрьевна
+        </div>
+
+        <div className={s.text}>
+            ОО «Бурятский» — Отнюкова Инна Валерьевна
+        </div>
+        </>
+    )
 
     return (
         <div className={s.home}>
@@ -64,6 +81,9 @@ export const TestUI = () => {
                 <ButtonSmallIcon callback={buttonHandler} icon={'setting'} style={s.margin_right} />
 
                 <ButtonSmallBlurIcon callback={buttonHandler} icon={'message'} style={s.margin_right} />
+            </div>
+            <div className={s.wrapper_new}>
+                <Accordion label={'Accordion'} vallue={ValueAccordion}/>
             </div>
         </div>
     );
