@@ -17,16 +17,12 @@
   }
 
   &:hover {
-    background: #FA4616;
+    border: 1px solid #F03200;
 
     .button__label {
-      color: #FFF;
+      color: #F03200;
     }
   }
-}
-
-.wrapper {
-  display: flex;
 }
 
 

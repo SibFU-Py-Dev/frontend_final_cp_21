@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import s from './ButtonBlur.module.scss';
+import s from './ButtonIcon.module.scss';
+import { GlobalSvgSelector } from '../../../assets/icons/global/GlobalSvgSelector';
 
 
-export const ButtonBlur = ({label, callback, style, style_label}) => {
+export const ButtonIcon = ({label, callback, style, style_label}) => {
 
     return (
         <div
@@ -12,6 +13,8 @@ export const ButtonBlur = ({label, callback, style, style_label}) => {
             <div className={s.button__label + ' ' + style_label}>
                 {label}
             </div>
+
+            <GlobalSvgSelector id='icon_button' />
         </div >
     );
 };
