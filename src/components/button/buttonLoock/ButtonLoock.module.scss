@@ -1,0 +1,29 @@
+.button {
+  padding: 13px 20px;
+  background: #E5F5FB;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  max-height: 39px;
+
+  &:hover {
+    .button__label {
+      color: #12B2ED;
+    }
+  }
+}
+
+.button__label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #009FDA;
+}
+
+.margin {
+  margin-left: 8px;
+}
+
+
+

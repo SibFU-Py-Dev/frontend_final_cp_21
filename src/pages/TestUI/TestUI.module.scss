@@ -3,8 +3,6 @@
   height: 100vh;
   margin: 0 auto;
   padding-top: 80px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .wrapper {
@@ -14,4 +12,12 @@
 
 .margin_right {
   margin-right: 16px;
+}
+
+.action_border {
+  border: 1px dashed #009FDA;
+
+  &:hover {
+    border: 1px dashed #009FDA;
+  }
 }
