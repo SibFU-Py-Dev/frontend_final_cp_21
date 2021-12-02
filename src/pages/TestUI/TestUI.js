@@ -14,6 +14,10 @@ import {ButtonLoock} from "../../components/button/buttonLoock/ButtonLoock";
 import {ButtonSmallIcon} from "../../components/button/buttonSmallIcon/ButtonSmallIcon";
 import {ButtonSmallBlurIcon} from "../../components/button/buttonSmallBlurIcon/ButtonSmallBlurIcon";
 import {Accordion} from "../../components/accordion/Accordion";
+import {StatusReaction} from "../../components/statuses/statusReaction/StatusReaction";
+import {StatusInformation} from "../../components/statuses/statusInformation/StatusInformation";
+import {StatusSuccessful} from "../../components/statuses/statusSuccessful/StatusSuccessful";
+import {StatusUnsuccessful} from "../../components/statuses/statusUnsuccessful/StatusUnsuccessful";
 
 
 export const TestUI = () => {
@@ -48,8 +52,8 @@ export const TestUI = () => {
                 <ButtonNone label={'ButtonNone'} callback={buttonHandler} style={s.margin_right} />
 
                 <ButtonIcon label={'Кнопка'} callback={buttonHandler} style={s.margin_right} />
-                
-                
+
+
                 <ButtonIcon label={'ButtonIcon'} callback={buttonHandler} icon={'icon_button'} style={s.margin_right} />
             </div>
                 <Alert color='red' text='text example'></Alert>
@@ -84,6 +88,16 @@ export const TestUI = () => {
             </div>
             <div className={s.wrapper_new}>
                 <Accordion label={'Accordion'} vallue={ValueAccordion}/>
+            </div>
+
+            <div className={s.wrapper_new}>
+                <StatusReaction value={'StatusReaction'} style={s.margin_right} />
+
+                <StatusInformation value={'StatusInformation'} style={s.margin_right} />
+
+                <StatusSuccessful value={'StatusSuccessful'} style={s.margin_right} />
+
+                <StatusUnsuccessful value={'StatusUnsuccessful'} style={s.margin_right} />
             </div>
         </div>
     );

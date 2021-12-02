@@ -1,0 +1,26 @@
+.root {
+  padding: 4px 8px;
+  background: #FFFADC;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-height: 26px;
+}
+
+.crcl {
+  width: 6px;
+  height: 6px;
+  background: #E19600;
+  border-radius: 100px;
+}
+
+.label {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #30353B;
+}
+
+
+
