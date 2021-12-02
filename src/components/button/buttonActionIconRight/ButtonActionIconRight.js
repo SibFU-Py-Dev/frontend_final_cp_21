@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import s from './ButtonIcon.module.scss';
-import { GlobalSvgSelector } from '../../../assets/icons/global/GlobalSvgSelector';
+import React from 'react';
+import s from './ButtonActionIconRight.module.scss';
+import {GlobalSvgSelector} from "../../../assets/icons/global/GlobalSvgSelector";
 
 
-export const ButtonIcon = ({label, callback, icon, style, style_label}) => {
-
+export const ButtonActionIconRight = ({label, callback, icon, style, style_label}) => {
     return (
         <div
             className={s.button + ' ' + style}
@@ -13,8 +12,7 @@ export const ButtonIcon = ({label, callback, icon, style, style_label}) => {
             <div className={s.button__label + ' ' + style_label}>
                 {label}
             </div>
-
             <GlobalSvgSelector id={icon} />
-        </div >
+        </div>
     );
 };

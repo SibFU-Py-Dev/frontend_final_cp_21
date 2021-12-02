@@ -1,0 +1,18 @@
+.button {
+  background: #009FDA;
+  padding: 18px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
+
+  &:hover {
+    background: #12B2ED;
+  }
+}
+
+
+
