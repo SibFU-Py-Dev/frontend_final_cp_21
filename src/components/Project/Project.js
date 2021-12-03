@@ -69,7 +69,7 @@ const menu = [
 export const Project = () => {
     const hintSystem = useHintSystem();
     const [data, setData] = useState(data_project);
-    const [activeTheme, setActiveTheme] = useState(data_project.theme[0]);
+    const [activeTheme, setActiveTheme] = useState(project_about);
 
     const addThemeHandler = () => {
 
