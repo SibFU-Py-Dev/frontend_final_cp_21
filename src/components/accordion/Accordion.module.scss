@@ -1,15 +1,17 @@
 .root {
   width: 100%;
   background: #FFF;
-  height: 48px;
+  height: 38px;
   align-items: center;
+  border-radius: 2px;
 }
 
 .root_active {
   width: 100%;
   background: #FFF;
   padding-bottom: 20px;
-  min-height: 48px;
+  min-height: 38px;
+  border-radius: 2px;
 }
 
 .body {
@@ -18,7 +20,7 @@
 
 .liner {
   width: 100%;
-  min-height: 48px;
+  min-height: 38px;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 12px 20px;
@@ -34,8 +36,8 @@
 }
 
 .label {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: #30353B;
 }
 

@@ -20,7 +20,7 @@
     "react-select": "^5.1.0",
     "sass": "^1.43.3"
   },
-  "proxy": "http://localhost",
+  "proxy": "https://backend-final-cp-21.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
