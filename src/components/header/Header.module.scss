@@ -64,11 +64,26 @@
   top: 52px;
   right: calc((100vw - 900px) / 2 + 15px);
   width: 800px;
-  height: 400px;
+  height: 350px;
   border-radius: 10px;
   background-color: #30353B;
   display: flex;
   color: #FA4616;
 }
 
+.popup_section {
+  width: 50%;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
 
+.achievement {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 3px solid #FA4616;
+  height: 50px;
+  font-size: 20px;
+}
