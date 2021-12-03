@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import s from './Home.module.scss';
 import {useHintSystem} from "../../hooks/useHintSystem";
 import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
@@ -7,6 +7,8 @@ import {Employees} from "../../components/Employees/Employees";
 import {Project} from "../../components/Project/Project";
 import { Students } from '../../components/Students/Students';
 import { Tasks } from '../../components/Tasks/Tasks';
+import {LernContext} from "../../context/LernContext";
+import {useLern} from "../../hooks/useLern";
 
 const info = {
     fio: 'Фамилия имя',
@@ -30,17 +32,10 @@ const home = [
         component: <Project />,
         label: "Проект",
     },
-    {
-        component: null,
-        label: "Редактирование курса",
-    },
-    {
-        component: null,
-        label: "Текущие задачи",
-    },
 ]
 
 export const Home = () => {
+    const lern = useLern();
     const [data, setData] = useState(info);
     const [menuStatus, setMenuStatus] = useState(home[0]);
 
@@ -53,6 +48,12 @@ export const Home = () => {
         <>
         <div className={s.root}>
             <div className={s.profile}>
+                <div
+                    className={s.button_set}
+                    onClick={() => {lern.openHandler(); console.log('444444444444')}}
+                >
+                    Адаптивный курс
+                </div>
                 <div className={s.body_profile}>
                     <div className={s.wrapper}>
                         <div className={s.avatar}>
@@ -61,6 +62,7 @@ export const Home = () => {
                         <div className={s.info}>
                             <div className={s.text_fio}>{data.fio}</div>
                             <div className={s.text_dop}>{data.dop_ifo}</div>
+
                         </div>
                     </div>
                     <div className={s.block}>

@@ -7,6 +7,10 @@ import { createTheme } from '@mui/material/styles';
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import {useAuth} from "./hooks/auth.hook";
 import {useRoutes} from "./Routes";
+import {LernProvider} from "./provider/LernProvider";
+import {Lern} from "./components/Lern/Lern";
+import {PopupFormProvider} from "./provider/PopupFormProvider";
+import {PopupForm} from "./components/popupForm/PopupForm";
 
 const theme = createTheme({
     palette: {
@@ -43,7 +47,13 @@ function App() {
                 }}
             >
                 <HintSystemProvider>
-                    <Router>{routes}</Router>
+                    <LernProvider>
+                        <PopupFormProvider>
+                            <Lern />
+                            {/*<PopupForm />*/}
+                            <Router>{routes}</Router>
+                        </PopupFormProvider>
+                    </LernProvider>
                 </HintSystemProvider>
             </AuthContext.Provider>
         </ThemeProvider>
