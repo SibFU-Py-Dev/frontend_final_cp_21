@@ -6,6 +6,7 @@ import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
 import profile_img from '../../assets/images/profile.png'
 import {Employees} from "../../components/Employees/Employees";
 import { Students } from '../../components/Students/Students';
+import { Tasks } from '../../components/Tasks/Tasks';
 
 const info = {
     fio: 'Фамилия имя',
@@ -20,6 +21,10 @@ const home = [
     {
         component: <Students />,
         label: "Ученики",
+    },
+    {
+        component: <Tasks />,
+        label: "Задачи",
     },
     {
         component: null,
