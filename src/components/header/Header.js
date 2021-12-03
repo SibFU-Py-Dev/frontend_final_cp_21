@@ -16,7 +16,9 @@ export const Header = () => {
     const [popup, setPopup] = useState(false);
 
     const data = {
-        progress: 50.3,
+        currentLevel: 5,
+        currentXP: 1000,
+        needXP: 2000,
         achievements: [
             {
                 svgId: 'ok',
@@ -59,17 +61,20 @@ export const Header = () => {
                             </div>
                             <div className={s.popup_section} style={{justifyContent: 'center'}}>
                                 <div style={{fontSize: '26px', marginBottom: '30px', textAlign: 'center'}}>
-                                    {`Прогресс: ${Math.floor(data.progress)} %`}
+                                    {`Уровень: ${data.currentLevel}`}
                                 </div>
-                                <LinearProgress value={data.progress} variant='determinate'
-                                    sx={{height: '24px', width: '100%', borderRadius: '12px'}}/>
+                                <LinearProgress value={data.currentXP / data.needXP * 100} variant='determinate'
+                                    sx={{height: '24px', width: '100%', borderRadius: '12px', marginBottom: '30px'}}/>
+                                <div style={{fontSize: '24px', marginBottom: '30px', textAlign: 'center'}}>
+                                    {`Прогресс: ${data.currentXP} / ${data.needXP} XP`}
+                                </div>
                             </div>
                         </div>:
                         null
                     }
 
                     <div className={s.progress_container} onMouseEnter={() => setPopup(true)} onMouseLeave={() => setPopup(false)}>
-                        <LinearProgress value={data.progress} variant='determinate'
+                        <LinearProgress value={data.currentXP / data.needXP * 100} variant='determinate'
                         sx={{height: '18px', width: '250px', borderRadius: '9px'}}/>
                     </div>
 
