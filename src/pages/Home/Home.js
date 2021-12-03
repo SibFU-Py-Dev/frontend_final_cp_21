@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import s from './Home.module.scss';
 import {useHintSystem} from "../../hooks/useHintSystem";
-import {HintPopup} from "../../components/HintPopup/HintPopup"
 import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
-import profile_img from '../../assets/images/profile.png'
+import profile_img from '../../assets/images/profile.png';
 import {Employees} from "../../components/Employees/Employees";
+import {Project} from "../../components/Project/Project";
 import { Students } from '../../components/Students/Students';
 import { Tasks } from '../../components/Tasks/Tasks';
 
@@ -27,7 +27,7 @@ const home = [
         label: "Задачи",
     },
     {
-        component: null,
+        component: <Project />,
         label: "Проект",
     },
     {
@@ -41,7 +41,6 @@ const home = [
 ]
 
 export const Home = () => {
-    const hintSystem = useHintSystem();
     const [data, setData] = useState(info);
     const [menuStatus, setMenuStatus] = useState(home[0]);
 

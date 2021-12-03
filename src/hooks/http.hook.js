@@ -1,15 +1,17 @@
 import { useState, useCallback, useContext } from 'react';
 import { AuthContext } from '../context/authContext';
 
-const name_server_url = '/api_1_0';
+const name_server_url = '/api/v1';
 
 const update_token = async (auth) => {
-  const res_refresh = await fetch(name_server_url + '/refresh/', {
+  const res_refresh = await fetch(name_server_url + '/auth/jwt/refresh/', {
     method: 'POST',
-    body: {},
+    body: {
+      refresh: auth.refreshToken
+    },
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + auth.refreshToken,
+      // Authorization: 'JWT ' + auth.refreshToken,
     },
   });
   const data_refresh = await res_refresh.json();
@@ -18,9 +20,9 @@ const update_token = async (auth) => {
     throw new Error(data_refresh.message || 'Что-то пошло не так');
   }
   await auth.logout();
-  await auth.login(data_refresh.access_token, auth.refreshToken);
+  await auth.login(data_refresh.access, auth.refreshToken);
 
-  return data_refresh.access_token;
+  return data_refresh.access;
 };
 
 export const useHttp = () => {
@@ -37,7 +39,7 @@ export const useHttp = () => {
           headers['Content-Type'] = 'application/json';
         }
         if (auth.token) {
-          headers['Authorization'] = 'Bearer ' + auth.token;
+          headers['Authorization'] = 'JWT ' + auth.token;
         }
         const response = await fetch(name_server_url + url, {
           method,
@@ -48,7 +50,7 @@ export const useHttp = () => {
         if (!response.ok) {
           if (response.status === 401) {
             let new_access_token = await update_token(auth);
-            headers['Authorization'] = 'Bearer ' + new_access_token;
+            headers['Authorization'] = 'JWT ' + new_access_token;
             const response = await fetch(name_server_url + url, {
               method,
               body,

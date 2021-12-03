@@ -38,9 +38,9 @@ export const Auth = () => {
             password: null,
         });
         try {
-            // const answer = await request('/api/auth', 'POST', form);
-            // auth.login(answer.token, answer.refreshToken);
-            auth.login('dfgd', 'dfsdfdsf');
+            const answer = await request('/auth/jwt/create/', 'POST', {username: form.login, password: form.password});
+            auth.login(answer.access, answer.refresh);
+            // auth.login('dfgd', 'dfsdfdsf');
         } catch (e){
             return setErrorForm({
                 login: 'Не верный Login или Password',
