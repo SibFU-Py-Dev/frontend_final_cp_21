@@ -41,7 +41,12 @@ export const Auth = () => {
             // const answer = await request('/api/auth', 'POST', form);
             // auth.login(answer.token, answer.refreshToken);
             auth.login('dfgd', 'dfsdfdsf');
-        } catch (e){}
+        } catch (e){
+            return setErrorForm({
+                login: 'Не верный Login или Password',
+                password: 'Не верный Login или Password',
+            });
+        }
     }
 
     const changeText = (value, field) => {

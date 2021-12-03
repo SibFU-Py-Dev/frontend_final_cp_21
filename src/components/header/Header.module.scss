@@ -1,0 +1,49 @@
+.root {
+  position: fixed;
+  width: 100%;
+  background: #FFF;
+  height: 52px;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 52px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: 52px;
+  align-items: center;
+}
+
+.button_profile {
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: #E3E5E8;
+  border-radius: 100px;
+  margin-right: 20px;
+}
+
+.button_notifi {
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+

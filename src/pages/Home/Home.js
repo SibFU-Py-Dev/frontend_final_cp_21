@@ -2,77 +2,82 @@ import React, {useEffect, useState} from 'react';
 import s from './Home.module.scss';
 import {useHintSystem} from "../../hooks/useHintSystem";
 import {HintPopup} from "../../components/HintPopup/HintPopup"
+import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
+import profile_img from '../../assets/images/profile.png'
+import {Employees} from "../../components/Employees/Employees";
 
+const info = {
+    fio: 'Фамилия имя',
+    dop_ifo: 'Другая инфа, статус'
+}
 
-const dataHint = [
+const home = [
     {
-        label: 'Подсказка - 1',
-        text: 'Очень умная подсказка...'
+        component: <Employees />,
+        label: "Сотрудники",
     },
     {
-        label: 'Подсказка - 2',
-        text: 'Очень умная подсказка...'
+        component: null,
+        label: "Проект",
     },
     {
-        label: 'Подсказка - 3',
-        text: 'Очень умная подсказка...'
+        component: null,
+        label: "Редактирование курса",
+    },
+    {
+        component: null,
+        label: "Текущие задачи",
     },
 ]
 
 export const Home = () => {
     const hintSystem = useHintSystem();
+    const [data, setData] = useState(info);
+    const [menuStatus, setMenuStatus] = useState(home[0]);
 
-    useEffect(() => {
-        hintSystem.changeDataHint(dataHint);
-    }, []);
-
-    const startHintHandler = () => {
-        hintSystem.nextHint();
+    const itemMenuHandler = (item) => {
+        setMenuStatus(item);
     }
+
 
     return (
         <>
-        {hintSystem.statusHint ? (
-            <div className={s.blur} />
-        ) : null}
+        <div className={s.root}>
+            <div className={s.profile}>
+                <div className={s.body_profile}>
+                    <div className={s.wrapper}>
+                        <div className={s.avatar}>
+                            <img className={s.img} src={profile_img} />
+                        </div>
+                        <div className={s.info}>
+                            <div className={s.text_fio}>{data.fio}</div>
+                            <div className={s.text_dop}>{data.dop_ifo}</div>
+                        </div>
+                    </div>
+                    <div className={s.block}>
+                        <div
+                            className={s.button_setting}
+                        >
+                            <GlobalSvgSelector id='setting' />
+                        </div>
+                    </div>
+                </div>
 
-        <div className={s.home}>
-            <div className={s.wrapper}>
-                <div
-                    className={s.button + ((hintSystem.statusHint === 1) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-1')}}
-                    name='button'
-                >
-                    Кнопка - 1
-                    <HintPopup index={1} />
-                </div>
-                <div
-                    className={s.button + ((hintSystem.statusHint === 2) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-2')}}
-                    name='button'
-                >
-                    Кнопка - 2
-                    <HintPopup index={2} />
-                </div>
-                <div
-                    className={s.button + ((hintSystem.statusHint === 3) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-3')}}
-                    name='button'
-                >
-                    Кнопка - 3
-                    <HintPopup index={3} />
-                </div>
-            </div>
-
-            <div className={s.wrapper}>
-                <div
-                    className={s.button}
-                    onClick={() => startHintHandler()}
-                >
-                    Запустить систему подсказок )))
+                <div className={s.menu}>
+                    {home.map((item, index) => (
+                        <div
+                            className={s.item_menu}
+                            onClick={() => itemMenuHandler(item)}
+                        >
+                            <div className={item === menuStatus ? s.item_label_active : s.item_label}>{item.label}</div>
+                            <div className={item === menuStatus ? s.hr_active : s.hr}/>
+                        </div >
+                    ))}
                 </div>
             </div>
         </div>
+
+            {menuStatus.component}
         </>
     );
 };

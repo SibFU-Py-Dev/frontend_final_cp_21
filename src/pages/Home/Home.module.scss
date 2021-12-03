@@ -1,43 +1,116 @@
-.home {
+.root {
   max-width: 900px;
-  height: 100vh;
   margin: 0 auto;
   padding-top: 80px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.button {
-  padding: 14px 30px;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: 0.5s;
+.profile {
+  background: #fff;
+  width: 100%;
+  padding: 5px 5px 10px 5px;
   border-radius: 4px;
-  border: 1px solid #F26126;
-  color: #F26126;
-  background-color: #FFF;
-  font-weight: 500;
-
-  &:hover {
-    background: #F26126;
-    color: #FFF;
-  }
-
 }
 
-.hint_active {
-  position: relative;
-  //border: 3px solid #db0a44;
-  z-index: 1005;
+.body_profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 45px;
+  margin-bottom: 20px;
 }
 
-.blur {
-  position: absolute;
-  z-index: 1000;
+.wrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.25);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin-right: 30px;
+}
+
+.text_fio {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.text_dop {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.button_setting {
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.item_menu {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  textDecoration: none;
+
+  &:hover {
+    .item_label {
+      color: #30353B;
+    }
+  }
+}
+
+.item_label_active {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  color: #30353B;
+  textDecoration: none;
+}
+
+.item_label {
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+  color: #747F8B;
+  textDecoration: none;
+}
+
+.hr_active {
+  width: 100%;
+  height: 2px;
+  background-color: #FF1A1A;
+  margin-top: 10px;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: #E3E5E8;
+  margin-top: 10px;
 }
