@@ -1,26 +1,52 @@
 import React from 'react';
 import './styles/index.scss';
-
-import {HintPopup} from "./components/HintPopup/HintPopup";
+import { BrowserRouter as Router } from 'react-router-dom';
 import {HintSystemProvider} from "./provider/HintSystemProvider";
+import { AuthContext } from './context/authContext';
+import { createTheme } from '@mui/material/styles';
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import {useAuth} from "./hooks/auth.hook";
+import {useRoutes} from "./Routes";
 
-import { Home } from './pages/Home/Home';
-import { TestUI } from './pages/TestUI/TestUI';
-import {Redirect, Route, Switch} from "react-router-dom";
-import {TestUIKov} from "./pages/TestUIKov/TestUIKov";
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: '#FEDAD0',
+            main: '#FA4616',
+            dark: '#F03200',
+            contrastText: '#fff',
+        },
+        secondary: {
+            light: '#99D9F0',
+            main: '#009FDA',
+            dark: '#12B2ED',
+            contrastText: '#000',
+        },
+    },
+});
 
 function App() {
+    const { login, logout, token, refreshToken, ready } = useAuth();
+
+    const isAuthenticated = !!token;
+    const routes = useRoutes(isAuthenticated);
+
     return (
-        <>
-            <HintSystemProvider>
-                <Switch>
-                    <Route path="/test-ui" exact component={TestUI}/>
-                    <Route path="/test-ui-kov" exact component={TestUIKov}/>
-                    <Route path="/home" exact component={Home}/>
-                    <Redirect to="/home" />
-                </Switch>
-            </HintSystemProvider>
-        </>
+        <ThemeProvider theme={theme}>
+            <AuthContext.Provider
+                value={{
+                    login,
+                    logout,
+                    token,
+                    refreshToken,
+                    ready,
+                }}
+            >
+                <HintSystemProvider>
+                    <Router>{routes}</Router>
+                </HintSystemProvider>
+            </AuthContext.Provider>
+        </ThemeProvider>
     );
 }
 
