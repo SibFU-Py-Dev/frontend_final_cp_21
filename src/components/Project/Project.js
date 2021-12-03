@@ -7,6 +7,9 @@ import profile_img from '../../assets/images/profile.png'
 import {ButtonActionDashedIconLeft} from "../button/buttonActionDashedIconLeft/ButtonActionDashedIconLeft";
 import {ButtonActionDashed} from "../button/buttonActionDashed/ButtonActionDashed";
 import {Accordion} from "../accordion/Accordion";
+import {useHttp} from "../../hooks/http.hook";
+import CircularProgress from "@mui/material/CircularProgress";
+import img_proj from '../../assets/images/img_proj.png';
 
 
 const data_project = {
@@ -68,8 +71,19 @@ const menu = [
 
 export const Project = () => {
     const hintSystem = useHintSystem();
-    const [data, setData] = useState(data_project);
+    const [data, setData] = useState(null);
     const [activeTheme, setActiveTheme] = useState(project_about);
+    const {request, error, clearError, loading} = useHttp();
+
+    const getUser = async () => {
+        try {
+            const answer = await request(`/projects/`, 'GET', null);
+            console.log('answer-users-', answer)
+            setData(answer[0])
+        } catch (e){}
+    }
+
+    useEffect(() => {getUser()}, [])
 
     const addThemeHandler = () => {
 
@@ -109,25 +123,36 @@ export const Project = () => {
                             {item.label}
                         </div>
                     ))}
+                    <div className={s.prog}>
+                        <img className={s.img} src={img_proj} />
+                    </div>
                 </div>
             </div>
 
             <div className={s.conatiner_project}>
+                {loading ? (<div className={s.fff}><CircularProgress color="secondary" /></div>) : null}
                 <div className={s.project_label}>{activeTheme?.label}</div>
-                {activeTheme?.value?.map((item, index) => (
-                    <Accordion label={item.label} vallue={TextValue(item.value)} style={s.accordion}/>
-                ))}
+                <div className={s.title}>{data?.title}</div>
+                <div className={s.result_info}>{data?.result_info}</div>
+                <div className={s.purpose}>{data?.purpose}</div>
+                <div className={s.issue}>{data?.issue}</div>
+                <div className={s.managment_info}>{data?.managment_info}</div>
+                <div className={s.calendar_info}>{data?.calendar_info}</div>
+                {/*{activeTheme?.value?.map((item, index) => (*/}
+                {/*    <Accordion label={item.label} vallue={TextValue(item.value)} style={s.accordion}/>*/}
+                {/*))}*/}
             </div>
 
             <div className={s.conatiner_users}>
-                {data?.users?.map((item, index) => (
-                    <div
-                        className={s.item_user}
-                    >
-                        <div className={s.name_user}>{item.name}</div>
-                        <div className={s.info_user}>{item.info}</div>
-                    </div>
-                ))}
+                {/*{data?.users?.map((item, index) => (*/}
+                {/*    <div*/}
+                {/*        className={s.item_user}*/}
+                {/*    >*/}
+                {/*        <div className={s.name_user}>{item.name}</div>*/}
+                {/*        <div className={s.info_user}>{item.info}</div>*/}
+                {/*    </div>*/}
+                {/*))}*/}
+
             </div>
         </div>
     );

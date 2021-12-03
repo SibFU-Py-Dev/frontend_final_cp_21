@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {Checkbox} from '@mui/material';
+import {useHttp} from "../../hooks/http.hook";
+import s from "../Students/Students.module.scss";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const Tasks = () => {
-    const [data, setData] = useState({
-        tasks: [
-            {
-                name: 'Название задания',
-                complete: true,
-            },
-            {
-                name: 'Название задания',
-                complete: false,
-            },
-            {
-                name: 'Название задания',
-                complete: true,
-            },
-        ]
-    });
+    const [data, setData] = useState([]);
+
+    const {request, error, clearError, loading} = useHttp();
+
+    const getUser = async () => {
+        try {
+            const answer = await request(`/user/tasks/`, 'GET', null);
+            console.log('taskkk-', answer)
+            setData(answer);
+        } catch (e){}
+    }
+
+    useEffect(() => {getUser()}, []);
 
     const callback = () => {};
 
@@ -33,7 +33,8 @@ export const Tasks = () => {
             marginBottom: '20px',
             fontFamily: 'Montserrat'
         }}>
-            {data.tasks.map((item) => {
+            {loading ? (<div className={s.fff}><CircularProgress color="secondary" /></div>) : null}
+            {data?.map((item) => {
                 return (
                     <div style={{
                         borderRadius: '5px',
@@ -44,9 +45,9 @@ export const Tasks = () => {
                         alignItems: 'center'
                     }}
                     onClick={callback}>
-                        <Checkbox inputProps={{readOnly: true}} checked={item.complete} disableRipple></Checkbox>
+                        <Checkbox inputProps={{readOnly: true}} checked={item.task.verifiability} disableRipple></Checkbox>
                         <div>
-                            {item.name}
+                            {item.task.description}
                         </div>
                     </div>
                 );

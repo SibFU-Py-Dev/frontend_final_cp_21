@@ -174,9 +174,10 @@
   background: #FA4616;
   display: flex;
   color: #FFF;
-  width: 50%;
+  width: 180px;
   margin-left: 20px;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .wrapper_button {
@@ -185,6 +186,12 @@
   left: 0;
   right: 0;
   padding: 20px;
+}
+
+.prog {
+  position: absolute;
+  bottom: 80px;
+  right: 40px;
 }
 
 .description {

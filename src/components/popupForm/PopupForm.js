@@ -10,7 +10,6 @@ export const PopupForm = () => {
     const [form, setForm] = useState({
 
     });
-
     const sendHandler = async () => {
         // Создаем задачу
     }

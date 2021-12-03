@@ -54,7 +54,16 @@
   align-items: center;
   background-color: #d4d4d4;
   border-radius: 20px;
-  padding: 4px 8px;
+  padding: 4px 12px;
+  padding-right: 16px;
+}
+
+.fff {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 15px;
 }
 
 .img {
@@ -71,7 +80,7 @@
 .avatar_mentor {
   width: 28px;
   height: 28px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .item_label {

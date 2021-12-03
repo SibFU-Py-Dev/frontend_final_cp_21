@@ -13,85 +13,15 @@ import {ButtonBorder} from "../button/buttonBorder/ButtonBorder";
 import {useLern} from "../../hooks/useLern";
 import {useHttp} from "../../hooks/http.hook";
 import YouTube from "react-youtube";
+import image_len from '../../assets/images/image_len.png';
 
 
-const data = [
-    {
-        label: 'Первый',
-        id: 1,
-    },
-    {
-        label: 'Второй',
-        id: 2,
-    },
-    {
-        label: 'Третий',
-        id: 3,
-    },
-    {
-        label: 'Четвертый',
-        id: 4,
-    },
-    {
-        label: 'Пятый',
-        id: 5,
-    },
-    {
-        label: 'Первый',
-        id: 1,
-    },
-    {
-        label: 'Второй',
-        id: 2,
-    },
-    {
-        label: 'Третий',
-        id: 3,
-    },
-    {
-        label: 'Четвертый',
-        id: 4,
-    },
-    {
-        label: 'Пятый',
-        id: 5,
-    },
-    {
-        label: 'Первый',
-        id: 1,
-    },
-    {
-        label: 'Второй',
-        id: 2,
-    },
-    {
-        label: 'Третий',
-        id: 3,
-    },
-    {
-        label: 'Четвертый',
-        id: 4,
-    },
-    {
-        label: 'Пятый',
-        id: 5,
-    },
-];
-
-const itemData = {
-    id: 3,
-    title: 'sgfdsg',
-    description: 'sadfsadf dfd safdsaf dsafdsaf sdaf',
-    url: 'https://vk.com/koleznev96',
-    next: 4,
-    prev: 2,
-}
 
 export const Lern = () => {
     const lernRoot = useLern();
-    const [well, setWell] = useState(data);
+    const [well, setWell] = useState([]);
     // const [wellSubsequent, setWellSubsequent] = useState(data);
-    const [itemWell, setItemWell] = useState(itemData);
+    const [itemWell, setItemWell] = useState(null);
     const {request, error, clearError} = useHttp();
     const [itemMen, setItemMen] = useState(true);
 
@@ -102,8 +32,8 @@ export const Lern = () => {
             const answer = await request('/articles/', 'GET', null);
             console.log('answer-', answer)
             setWell(answer)
-            const data = await request('/articles/3/', 'GET', null);
-            console.log('data-', data)
+            const data = await request('/articles/4/', 'GET', null);
+            console.log('datafsbsfgfdsgfsgfgfgf77777777777-', data)
             setItemWell(data)
         } catch (e){}
     }
@@ -174,12 +104,20 @@ export const Lern = () => {
                     {itemMen ? (
                         <>
                         <div className={s.title}>{itemWell?.title}</div>
-                        <div className={s.url}>{itemWell?.resource_link}</div>
+                            {/*<div className={s.url}>*/}
+                            <a href={itemWell?.resource_link} className={s.url} target="_blank" rel="noopener noreferrer">
+                               Сылка на ресурс
+                            </a>
+                            {/*</div>*/}
                         <div className={s.description}>{itemWell?.content}</div>
                         </>
                     ) : (
                         <YouTube videoId={itemWell?.video_link} opts={{width: '100%'}} />
                     )}
+
+                    <div className={s.prog}>
+                        <img className={s.img} src={image_len} />
+                    </div>
 
 
                     {/*<div className={s.cont_urls}>*/}
