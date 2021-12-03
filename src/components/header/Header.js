@@ -4,6 +4,7 @@ import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
 import {Button, LinearProgress} from '@mui/material';
 
 export const Header = () => {
+    const [popup, setPopup] = useState(false);
 
     const data = {
         progress: 50,
@@ -17,9 +18,17 @@ export const Header = () => {
                 <div className={s.wrapper}>
                     <Button sx={{marginRight:'20px'}} variant='outlined'>Адаптационный курс</Button>
 
-                    <div>
+                    {
+                        popup ?
+                        <div className={s.popup}>
+                            <div></div>
+                        </div>:
+                        null
+                    }
+
+                    <div className={s.progress_container} onMouseEnter={() => setPopup(true)} onMouseLeave={() => setPopup(false)}>
                         <LinearProgress value={data.progress} variant='determinate'
-                        sx={{height: '18px', width: '250px', marginRight: '20px', borderRadius: '9px'}}/>
+                        sx={{height: '18px', width: '250px', borderRadius: '9px'}}/>
                     </div>
 
                     <div
