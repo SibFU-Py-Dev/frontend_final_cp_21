@@ -16,7 +16,7 @@ export const Header = () => {
     const [popup, setPopup] = useState(false);
 
     const data = {
-        progress: 50,
+        progress: 50.3,
         achievements: [
             {
                 svgId: 'ok',
@@ -57,7 +57,13 @@ export const Header = () => {
                                     )
                                 }))}
                             </div>
-                            <div className={s.popup_section}></div>
+                            <div className={s.popup_section} style={{justifyContent: 'center'}}>
+                                <div style={{fontSize: '26px', marginBottom: '30px', textAlign: 'center'}}>
+                                    {`Прогресс: ${Math.floor(data.progress)} %`}
+                                </div>
+                                <LinearProgress value={data.progress} variant='determinate'
+                                    sx={{height: '24px', width: '100%', borderRadius: '12px'}}/>
+                            </div>
                         </div>:
                         null
                     }
