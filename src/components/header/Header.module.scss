@@ -59,6 +59,12 @@
   }
 }
 
+.hint_active {
+  position: relative;
+  //border: 3px solid #db0a44;
+  z-index: 1205;
+}
+
 .popup {
   position: fixed;
   top: 52px;

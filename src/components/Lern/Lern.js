@@ -44,7 +44,7 @@ export const Lern = () => {
         try {
             const answer = await request('/articles/', 'GET', null);
             setWell(answer)
-            const data = await request('/articles/4/', 'GET', null);
+            const data = await request('/articles/6/', 'GET', null);
             setItemWell(data)
         } catch (e){}
     }

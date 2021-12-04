@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Header.module.scss';
 import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
 import {Button, LinearProgress} from '@mui/material';
 import {useLern} from "../../hooks/useLern";
+import {useHintSystem} from "../../hooks/useHintSystem";
+import {HintPopup} from "../HintPopup/HintPopup";
 
 const Achievement = (props) => {
     return (
@@ -13,9 +15,28 @@ const Achievement = (props) => {
     );
 }
 
+const dataHint = [
+    {
+        label: 'Адаптивные курсы',
+        text: 'Скорее присоединяйся к нам!'
+    },
+]
+
 export const Header = () => {
     const lern = useLern();
     const [popup, setPopup] = useState(false);
+    const hintSystem = useHintSystem();
+
+    useEffect(() => {
+        hintSystem.changeDataHint(dataHint);
+        hintSystem.nextHint();
+    }, []);
+
+    const startHintHandler = () => {
+        hintSystem.nextHint();
+    }
+
+
 
     const data = {
         currentLevel: 5,
@@ -47,7 +68,7 @@ export const Header = () => {
                 <div className={s.title}>PASCAL</div>
 
                 <div className={s.wrapper}>
-                    <Button sx={{marginRight:'20px'}} onClick={() => lern.openHandler()} variant='outlined'>Адаптационный курс</Button>
+                    <Button sx={{marginRight:'20px'}} className={((hintSystem.statusHint === 1) ? (s.hint_active) : null)} onClick={() => {lern.openHandler(); startHintHandler()}} variant='outlined'>Адаптационный курс <HintPopup index={1} /></Button>
 
                     {
                         popup ?

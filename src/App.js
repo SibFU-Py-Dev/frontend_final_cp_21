@@ -49,6 +49,7 @@ function App() {
                 <HintSystemProvider>
                     <LernProvider>
                         <PopupFormProvider>
+                            <PopupForm />
                             <Lern />
                             {/*<PopupForm />*/}
                             <Router>{routes}</Router>

@@ -8,6 +8,8 @@ import {ButtonActionDashedIconLeft} from "../button/buttonActionDashedIconLeft/B
 import {ButtonActionDashed} from "../button/buttonActionDashed/ButtonActionDashed";
 import {useHttp} from "../../hooks/http.hook";
 import CircularProgress from "@mui/material/CircularProgress";
+import {PopupForm} from "../popupForm/PopupForm";
+import {usePopupForm} from "../../hooks/usePopupForm";
 
 
 const info = {
@@ -20,9 +22,11 @@ const menu = [
 ]
 
 export const Employees = () => {
+    const rootPopup = usePopupForm();
     const hintSystem = useHintSystem();
     const [data, setData] = useState([]);
     const [dataL, setDataL] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const {request, error, clearError, loading} = useHttp();
 
@@ -41,14 +45,25 @@ export const Employees = () => {
 
     }
 
+    const exitPopup = () => {
+        rootPopup.exitHandler();
+    }
+
+    const openHandler = () => {
+        rootPopup.openHandler(data);
+    }
+
 
     return (
+        <>
+
         <div className={s.root}>
             <div className={s.label}>Ученики</div>
             <div className={s.conatiner_item}>
                 {loading ? (<div className={s.fff}><CircularProgress color="secondary" /></div>) : null}
                 {data?.map((item, index) => (
                     <>
+
                     <div className={s.item_in}>
                         <div className={s.item_wrapper}>
                             <div className={s.avatar}>
@@ -72,7 +87,7 @@ export const Employees = () => {
                                 Loplov Vlotop
                             </div>
                         </div>
-                        <ButtonActionDashed label={'Добавить задачу'} callback={addTaskHandler} />
+                        <ButtonActionDashed label={'Добавить задачу'} callback={openHandler} />
                     </div>
                     <div className={s.liner}>
                         <div className={s.item_hr} />
@@ -109,7 +124,7 @@ export const Employees = () => {
                             {/*        {item.mentor}*/}
                             {/*    </div>*/}
                             {/*</div>*/}
-                            <ButtonActionDashed label={'Добавить задачу'} callback={addTaskHandler} />
+                            <ButtonActionDashed label={'Добавить задачу'} callback={openHandler} />
                         </div>
                         <div className={s.liner}>
                             <div className={s.item_hr} />
@@ -118,5 +133,6 @@ export const Employees = () => {
                 ))}
             </div>
         </div>
+                </>
     );
 };

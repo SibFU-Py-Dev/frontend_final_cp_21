@@ -13,6 +13,8 @@ export const HintPopup = ({index}) => {
     // }
 
     return (
+        <>
+
         <div className={index !== hintSystem.statusHint ? s.popup : s.popup_active}>
             <div className={s.wrapper}>
                 <div className={s.label}>
@@ -29,5 +31,6 @@ export const HintPopup = ({index}) => {
                 </div>
             </div>
         </div>
+            </>
     );
 };

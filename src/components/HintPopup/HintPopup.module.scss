@@ -2,7 +2,7 @@
   position: absolute;
   top: -105%;
   left: 105%;
-  z-index: 1005;
+  z-index: 1200;
   min-width: 250px;
   background: #FFF;
   border-radius: 4px;
@@ -12,36 +12,44 @@
   transition: all 0.9s ease;
 }
 
+.blur {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
 .popup_active {
   opacity:1;
   position: absolute;
-  top: -105%;
-  left: 105%;
+  top: 107%;
+  left: 90%;
   z-index: 1005;
   min-width: 250px;
-  background: #F7F7F8;
-  border-radius: 4px 4px 4px 0;
+  background: #555558;
+  border-radius: 0px 4px 4px 4px;
   //border: 2px solid #EB5815;
   display: flex;
   transition: all 0.9s ease;
+  width: 300px;
 }
 
 .wrapper {
-  position: relative;
   width: 100%;
   height: 100%;
   padding: 10px;
 }
 
 .label {
-  color: #000;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 500;
 }
 
 .text {
   margin-top: 5px;
-  color: #8C8C8C;
+  color: #FA4616;
   font-size: 14px;
   font-weight: 400;
 }
@@ -51,7 +59,7 @@
 }
 
 .button {
-  position: absolute;
+  //position: absolute;
   cursor: pointer;
   bottom: 6px;
   right: 14px;

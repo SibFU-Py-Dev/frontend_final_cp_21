@@ -11,6 +11,7 @@ import {LernContext} from "../../context/LernContext";
 import {useLern} from "../../hooks/useLern";
 import {useHttp} from "../../hooks/http.hook";
 import CircularProgress from "@mui/material/CircularProgress";
+import {PopupLoad} from "../../components/popupLoad/PopupLoad";
 
 const info = {
     fio: 'Фамилия имя',
@@ -18,6 +19,10 @@ const info = {
 }
 
 const home = [
+    {
+        component: <Project />,
+        label: "Проект",
+    },
     {
         component: <Employees />,
         label: "Сотрудники",
@@ -30,9 +35,20 @@ const home = [
         component: <Tasks />,
         label: "Задачи",
     },
+]
+
+const dataHint = [
     {
-        component: <Project />,
-        label: "Проект",
+        label: 'Подсказка - 1',
+        text: 'Очень умная подсказка...'
+    },
+    {
+        label: 'Подсказка - 2',
+        text: 'Очень умная подсказка...'
+    },
+    {
+        label: 'Подсказка - 3',
+        text: 'Очень умная подсказка...'
     },
 ]
 
@@ -40,6 +56,9 @@ export const Home = () => {
     const [data, setData] = useState(info);
     const [menuStatus, setMenuStatus] = useState(home[0]);
     const {request, error, clearError, loading} = useHttp();
+    const hintSystem = useHintSystem();
+
+    const[ isOpen, setIsOpen] = useState(true);
 
     const itemMenuHandler = (item) => {
         setMenuStatus(item);
@@ -56,6 +75,10 @@ export const Home = () => {
 
     return (
         <>
+            {/*{hintSystem.statusHint ? (*/}
+            {/*    <div className={s.blur} />*/}
+            {/*) : null}*/}
+            <PopupLoad isOpen={isOpen} setIsOpen={setIsOpen} />
         <div className={s.root}>
             <div className={s.profile}>
                 <div className={s.body_profile}>
