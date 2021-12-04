@@ -5,7 +5,6 @@ export const LernProvider = ({children, ...props}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const openHandler = () => {
-        console.log('dffffffffffff')
         setIsOpen(true);
     }
 

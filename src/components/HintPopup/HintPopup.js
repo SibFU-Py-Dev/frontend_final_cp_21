@@ -9,7 +9,6 @@ export const HintPopup = ({index}) => {
 
 
     // if (index !== hintSystem.statusHint) {
-    //     console.log('auuuu-', hintSystem.statusHint, index)
     //     return null;
     // }
 
