@@ -6,6 +6,8 @@ import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
 import profile_img from '../../assets/images/profile.png'
 import {ButtonActionDashedIconLeft} from "../button/buttonActionDashedIconLeft/ButtonActionDashedIconLeft";
 import {ButtonActionDashed} from "../button/buttonActionDashed/ButtonActionDashed";
+import {useHttp} from "../../hooks/http.hook";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 const info = {
@@ -19,48 +21,23 @@ const menu = [
 
 export const Employees = () => {
     const hintSystem = useHintSystem();
-    const [data, setData] = useState({
-        pupils: [
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Наставника'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Наставника'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Наставника'
-            },
-        ],
-        mentors: [
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-            {
-                name: 'Фамилия имя',
-                mentor: 'Фамилия Ментор'
-            },
-        ]
-    });
+    const [data, setData] = useState([]);
+    const [dataL, setDataL] = useState([]);
+
+    const {request, error, clearError, loading} = useHttp();
+
+    const getUser = async () => {
+        try {
+            const answer = await request(`/employees/`, 'GET', null);
+            console.log('answer-usersfdgsdgsdfgfgfgsfdgfgfsgfsdg-', answer)
+            setData(answer);
+            const answer_new = await request(`/teachers/`, 'GET', null);
+            console.log('answer-new-', answer_new)
+            setDataL(answer_new);
+        } catch (e){}
+    }
+
+    useEffect(() => {getUser()}, [])
 
     const addTaskHandler = (data) => {
 
@@ -71,7 +48,8 @@ export const Employees = () => {
         <div className={s.root}>
             <div className={s.label}>Ученики</div>
             <div className={s.conatiner_item}>
-                {data.pupils.map((item, index) => (
+                {loading ? (<div className={s.fff}><CircularProgress color="secondary" /></div>) : null}
+                {data?.map((item, index) => (
                     <>
                     <div className={s.item_in}>
                         <div className={s.item_wrapper}>
@@ -79,7 +57,7 @@ export const Employees = () => {
                                 <img className={s.img} src={profile_img} />
                             </div>
                             <div className={s.item_label}>
-                                {item.name}
+                                {item.user.first_name + ' ' + item.user.last_name}
                             </div>
                         </div>
                         <div className={s.progress}>
@@ -93,7 +71,7 @@ export const Employees = () => {
                                 <img className={s.img} src={profile_img} />
                             </div>
                             <div className={s.item_value_mentor}>
-                                {item.mentor}
+                                Loplov Vlotop
                             </div>
                         </div>
                         <ButtonActionDashed label={'Добавить задачу'} callback={addTaskHandler} />
@@ -107,7 +85,8 @@ export const Employees = () => {
 
             <div className={s.label}>Наставники</div>
             <div className={s.conatiner_item}>
-                {data.mentors.map((item, index) => (
+                {loading ? (<div className={s.fff}><CircularProgress color="secondary" /></div>) : null}
+                {dataL?.map((item, index) => (
                     <>
                         <div className={s.item_in}>
                             <div className={s.item_wrapper}>
@@ -115,7 +94,7 @@ export const Employees = () => {
                                     <img className={s.img} src={profile_img} />
                                 </div>
                                 <div className={s.item_label}>
-                                    {item.name}
+                                    {item.user.first_name + ' ' + item.user.last_name}
                                 </div>
                             </div>
                             <div className={s.progress}>

@@ -75,6 +75,23 @@
   padding: 15px;
 }
 
+.img {
+  width: 100%;
+}
+
+.prog {
+  width: 150px;
+}
+
+.fff {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 15px;
+}
+
+
 .project_label {
   font-size: 18px;
   font-weight: 400;
@@ -84,4 +101,54 @@
 .accordion {
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.result_info {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding: 5px 15px;
+  background: #FA4616;
+  border-radius: 20px;
+}
+
+.purpose {
+  font-size: 18px;
+  font-weight: 500;
+  color: #343434;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.issue {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.managment_info {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.calendar_info {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3b3b3b;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import s from './Header.module.scss';
 import {GlobalSvgSelector} from "../../assets/icons/global/GlobalSvgSelector";
 import {Button, LinearProgress} from '@mui/material';
+import {useLern} from "../../hooks/useLern";
 
 const Achievement = (props) => {
     return (
@@ -13,6 +14,7 @@ const Achievement = (props) => {
 }
 
 export const Header = () => {
+    const lern = useLern();
     const [popup, setPopup] = useState(false);
 
     const data = {
@@ -45,7 +47,7 @@ export const Header = () => {
                 <div className={s.title}>PASCAL</div>
 
                 <div className={s.wrapper}>
-                    <Button sx={{marginRight:'20px'}} variant='outlined'>Адаптационный курс</Button>
+                    <Button sx={{marginRight:'20px'}} onClick={() => lern.openHandler()} variant='outlined'>Адаптационный курс</Button>
 
                     {
                         popup ?
