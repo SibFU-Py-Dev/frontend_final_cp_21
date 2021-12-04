@@ -29,10 +29,8 @@ export const Employees = () => {
     const getUser = async () => {
         try {
             const answer = await request(`/employees/`, 'GET', null);
-            console.log('answer-usersfdgsdgsdfgfgfgsfdgfgfsgfsdg-', answer)
             setData(answer);
             const answer_new = await request(`/teachers/`, 'GET', null);
-            console.log('answer-new-', answer_new)
             setDataL(answer_new);
         } catch (e){}
     }

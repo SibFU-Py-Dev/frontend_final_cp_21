@@ -18,7 +18,6 @@ export const Students = ({}) => {
     const getUsers = async () => {
         try {
             const answer = await request(`/employees/`, 'GET', null);
-            console.log('answer-users-', answer)
             setData(answer)
         } catch (e){}
     }

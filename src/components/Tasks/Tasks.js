@@ -12,7 +12,6 @@ export const Tasks = () => {
     const getUser = async () => {
         try {
             const answer = await request(`/user/tasks/`, 'GET', null);
-            console.log('taskkk-', answer)
             setData(answer);
         } catch (e){}
     }

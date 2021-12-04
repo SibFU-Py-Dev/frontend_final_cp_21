@@ -40,7 +40,6 @@ export const TestHint = () => {
             <div className={s.wrapper}>
                 <div
                     className={s.button + ((hintSystem.statusHint === 1) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-1')}}
                     name='button'
                 >
                     Кнопка - 1
@@ -48,7 +47,6 @@ export const TestHint = () => {
                 </div>
                 <div
                     className={s.button + ((hintSystem.statusHint === 2) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-2')}}
                     name='button'
                 >
                     Кнопка - 2
@@ -56,7 +54,6 @@ export const TestHint = () => {
                 </div>
                 <div
                     className={s.button + ((hintSystem.statusHint === 3) ? (' ' + s.hint_active) : '')}
-                    onClick={(e) => {if(e.currentTarget.name == 'button')console.log('buttonBlur click-3')}}
                     name='button'
                 >
                     Кнопка - 3

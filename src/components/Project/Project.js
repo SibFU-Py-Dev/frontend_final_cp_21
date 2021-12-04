@@ -78,7 +78,6 @@ export const Project = () => {
     const getUser = async () => {
         try {
             const answer = await request(`/projects/`, 'GET', null);
-            console.log('answer-users-', answer)
             setData(answer[0])
         } catch (e){}
     }

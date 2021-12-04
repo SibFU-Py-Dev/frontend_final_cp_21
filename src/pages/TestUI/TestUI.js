@@ -23,7 +23,6 @@ import {StatusUnsuccessful} from "../../components/statuses/statusUnsuccessful/S
 export const TestUI = () => {
 
     const buttonHandler = () => {
-        console.log('click - button')
     }
 
     const ValueAccordion = (

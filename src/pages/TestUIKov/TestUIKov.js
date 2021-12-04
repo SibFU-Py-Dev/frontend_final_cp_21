@@ -18,7 +18,6 @@ import {ButtonSmallBlurIcon} from "../../components/button/buttonSmallBlurIcon/B
 export const TestUIKov = () => {
 
     const buttonHandler = () => {
-        console.log('click - button')
     }
 
     return (

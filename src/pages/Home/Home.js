@@ -48,7 +48,6 @@ export const Home = () => {
     const getUser = async () => {
         try {
             const answer = await request(`/auth/users/me/`, 'GET', null);
-            console.log('answer-users-', answer)
             setData(answer)
         } catch (e){}
     }

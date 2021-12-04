@@ -14,6 +14,19 @@ import {useLern} from "../../hooks/useLern";
 import {useHttp} from "../../hooks/http.hook";
 import YouTube from "react-youtube";
 import image_len from '../../assets/images/image_len.png';
+import doc_img from '../../assets/images/doc.png';
+import js_file from '../../assets/images/js-file.png';
+import pdf_file from '../../assets/images/pdf-file.png';
+import ppt_file from '../../assets/images/ppt-file.png';
+import txt_file from '../../assets/images/txt-file.png';
+
+const mas_pg = [
+    doc_img,
+    js_file,
+    txt_file,
+    pdf_file,
+    ppt_file
+]
 
 
 
@@ -30,10 +43,8 @@ export const Lern = () => {
         // Получаем текущий элемент курса
         try {
             const answer = await request('/articles/', 'GET', null);
-            console.log('answer-', answer)
             setWell(answer)
             const data = await request('/articles/4/', 'GET', null);
-            console.log('datafsbsfgfdsgfsgfgfgf77777777777-', data)
             setItemWell(data)
         } catch (e){}
     }
@@ -46,6 +57,7 @@ export const Lern = () => {
         // Получаем элемент курса по id
         try {
             const answer = await request(`/articles/${id}/`, 'GET', null);
+            console.log('data=', answer);
             setItemWell(answer)
         } catch (e){}
     }
@@ -106,7 +118,7 @@ export const Lern = () => {
                         <div className={s.title}>{itemWell?.title}</div>
                             {/*<div className={s.url}>*/}
                             <a href={itemWell?.resource_link} className={s.url} target="_blank" rel="noopener noreferrer">
-                               Сылка на ресурс
+                               Ссылка на ресурс
                             </a>
                             {/*</div>*/}
                         <div className={s.description}>{itemWell?.content}</div>
@@ -114,6 +126,21 @@ export const Lern = () => {
                     ) : (
                         <YouTube videoId={itemWell?.video_link} opts={{width: '100%'}} />
                     )}
+
+                    <div className={s.liner_files}>
+                        {itemWell?.files?.map((item, index) => (<a href={item.file} className={s.img_jp} target="_blank" rel="noopener noreferrer">
+                            <img className={s.img_jp} src={mas_pg[index]} />
+                        </a>))}
+                    </div>
+                    <div className={s.label_urls}>Дополнительные ссылки</div>
+                    <div className={s.liner_files}>
+                        <a href={itemWell?.resource_link_1} className={s.img_jpp} target="_blank" rel="noopener noreferrer">
+                            Рессурс - 2
+                        </a>
+                        <a href={itemWell?.resource_link_2} className={s.img_jpp} target="_blank" rel="noopener noreferrer">
+                            Рессурс - 3
+                        </a>
+                    </div>
 
                     <div className={s.prog}>
                         <img className={s.img} src={image_len} />
